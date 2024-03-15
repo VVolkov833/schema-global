@@ -10,8 +10,7 @@ function settings_structure() {
 
     $fields_structure = [
         '' => [
-            ['Schema for all pages', 'textarea', ['comment' => 'Insert the Schema code starting with <script> ending with </script>', 'placeholder' => '<script>...', 'rows' => '30', 'style' => 'width:
-                100%']],
+            ['Schema for all pages', 'textarea', ['comment' => 'Insert the Schema code starting with <script> ending with </script>', 'placeholder' => '<script>...', 'rows' => '30', 'style' => 'width:100%']],
         ],
     ];
 
@@ -107,7 +106,7 @@ add_action( 'admin_init', function() {
 
 });
 
-function settings_sanitize( $values ){
+function settings_sanitize( $values ) {
 
     //print_r( $values ); exit;
     $fields_structure = settings_structure();
@@ -137,7 +136,7 @@ function settings_sanitize( $values ){
             }
 
             return $css; // sanitize_text_field is applied to textareas by field type
-        }
+        },
     ];
 
     $trials = [];
@@ -172,7 +171,7 @@ function settings_sanitize( $values ){
             $v = $v === $trial->option ? $v : '';
         }
         if ( $trial->type === 'text' ) { $v = sanitize_text_field( $v ); }
-        if ( $trial->type === 'textarea' ) { $v = sanitize_textarea_field( $v ); }
+        //if ( $trial->type === 'textarea' ) { $v = sanitize_textarea_field( $v ); }
 
 	}
     //print_r( [$values, $trials] ); exit;
